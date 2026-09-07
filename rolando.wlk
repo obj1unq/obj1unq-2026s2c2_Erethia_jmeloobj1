@@ -1,6 +1,7 @@
 object rolando {
 const mochila = []
 var capacidadDeMochila = 2
+const hogar = castilloDePiedra 
 
 method mochila() {
   return mochila
@@ -28,7 +29,7 @@ method capacidadDeMochila() {
  }
 
 method vaciarMochila() {
-  castilloDePiedra.guardarEnAlmacen(mochila)
+  hogar.guardarEnAlmacen(mochila)
   mochila.clear()
 }
 
