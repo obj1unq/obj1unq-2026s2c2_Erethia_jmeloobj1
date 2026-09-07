@@ -25,7 +25,7 @@ object rolando {
   }
   
   method poseeArtefacto(artefacto) {
-    return mochila.find(artefacto) 
+    return self.posesionesDeRolando().contains(artefacto) 
      }
 
 
