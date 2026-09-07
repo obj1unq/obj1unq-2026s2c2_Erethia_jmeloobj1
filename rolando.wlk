@@ -11,12 +11,12 @@ method capacidadDeMochila(_capacidadDeMochila) {
 }
 
 method capacidadDeMochila() {
-  return capacidadDeMochila
+    return capacidadDeMochila
 }
 
  method encontrarArtefacto(artefacto){
     if (self.validarRecolectarArtefacto()){
-               mochila.add(artefacto) 
+        mochila.add(artefacto) 
     }
     else{
     }
@@ -27,7 +27,23 @@ method capacidadDeMochila() {
     return mochila.size() < capacidadDeMochila 
  }
 
+method vaciarMochila() {
+  castilloDePiedra.guardarEnAlmacen(mochila)
+  mochila.clear()
+}
 
+}
+
+object castilloDePiedra{
+  const almacenDeCastillo = [] 
+   
+method guardarEnAlmacen(artefactos) {
+  almacenDeCastillo.addAll(artefactos)
+}
+
+method artefactosEnELCastillo() {
+  return almacenDeCastillo
+}
 }
 
 object espadaDelDestino {
@@ -36,6 +52,10 @@ object espadaDelDestino {
 
 object libroDeHechizos{
 
+}
+
+object collarDIvino{
+  
 }
 
 object armaduraDeAceroValyrio {
