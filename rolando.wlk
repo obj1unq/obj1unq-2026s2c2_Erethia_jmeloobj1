@@ -1,5 +1,5 @@
-import wollok.mirror.*
-object rolando {
+
+object rolando { 
   const mochila = []
   var capacidadDeMochila = 2
   const hogar = castilloDePiedra
@@ -7,13 +7,17 @@ object rolando {
   const poderBase = 5
   const batallasConCollarEnUso = 0 
  
-  method mochila() = mochila
+  method mochila(){
+      return mochila
+  } 
   
   method capacidadDeMochila(_capacidadDeMochila) {
     capacidadDeMochila = _capacidadDeMochila
   }
   
-  method capacidadDeMochila() = capacidadDeMochila
+  method capacidadDeMochila() {
+    return capacidadDeMochila
+  }
   
   method encontrarArtefacto(artefacto) {
     if (self.validarRecolectarArtefacto()){ 
@@ -22,10 +26,10 @@ object rolando {
     }
     else{
         historiaDeRolando.agregarObjetoEncontrados(artefacto)
-    }
   }  
+}
 
-  method historiaDeRolando() {
+  method historiaDeRolando(){
     return historiaDeRolando.objetosEncontrados()
   }
   
@@ -33,7 +37,7 @@ object rolando {
   
   method validarRecolectarArtefacto() = mochila.size() < capacidadDeMochila
   
-  method vaciarMochila() {
+  method vaciarMochila(){
     hogar.guardarEnAlmacen(mochila)
     mochila.clear()
   }
@@ -54,11 +58,11 @@ method poderDePeleaEnBatalla() {
   return (poderBase + 1) + mochila.sum({artefacto => artefacto.poderQueAportaA_(self)})
 }
 
-method batallasConCollarEnUso() {
+method batallasConCollarEnUso(){
   return batallasConCollarEnUso
 }
 
-method hogar() {
+method hogar(){
 return castilloDePiedra  
 }
 
@@ -68,9 +72,8 @@ method poderObjetoMasPoderosoEnHogar() {
   }
   else{
     (hogar.artefactosEnELCastillo().map({artefacto => artefacto.poderQuAPortaA_(self)})).max()
+    }
   }
-}
-
 }
 
 object historiaDeObjetos{
@@ -83,7 +86,6 @@ object historiaDeObjetos{
   method agregarObjetoEncontrados(artefacto) {
     objetosEncontrados.add(artefacto)
   }
-
 }
 
 object castilloDePiedra {
@@ -93,7 +95,9 @@ object castilloDePiedra {
     almacenDeCastillo.addAll(artefactos)
   }
   
-  method artefactosEnELCastillo() = almacenDeCastillo
+method artefactosEnELCastillo(){ 
+      return almacecenDeCastillo
+      }
 }
 
 object espadaDelDestino {
@@ -124,8 +128,8 @@ object libroDeHechizos {
     }
     else{
       0
-    }
-}
+    } 
+  }
 }
 
 
@@ -147,6 +151,7 @@ object invocacion{
   }
 }
 
+
 object collarDIvino {
   
   method poderQueAportaA_(jugador) {
@@ -164,3 +169,52 @@ object armaduraDeAceroValyrio {
     return 6
   }
 }
+
+
+object caterina {
+  var poder = 28
+  const hogar = fortalezaDeAcero
+
+  method poderDePelea() {
+    return poder
+  }
+
+  method hogar() {
+    return hogar
+  }
+}
+
+object fortalezaDeAcero {
+  
+}
+
+object archibaldo {
+  var poder = 16 
+  const hogar = palacioDeMarmol
+
+  method poderDePelea() {
+    return poder
+  } 
+
+  method hogar() {
+    hogar
+  }
+}
+
+object palacioDeMarmol {
+  
+}
+
+object astra {
+  var poder = 14
+  const  = torreDeMarfil
+
+  method poderDePelea(){
+    return 14
+  }
+
+  method hogar(){
+    return hogar
+  }
+}
+
