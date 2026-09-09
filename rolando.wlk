@@ -1,3 +1,4 @@
+import wollok.mirror.*
 object rolando {
   const mochila = []
   var capacidadDeMochila = 2
@@ -46,11 +47,28 @@ object rolando {
   }
 
 method poderDePelea() {
-  return poderBase + mochila.sum({artefacto --> artefacto.poder()})
+  return poderBase + mochila.sum({artefacto => artefacto.poderQueAportaA_(self)})
+}
+
+method poderDePeleaEnBatalla() {
+  return (poderBase + 1) + mochila.sum({artefacto => artefacto.poderQueAportaA_(self)})
 }
 
 method batallasConCollarEnUso() {
   return batallasConCollarEnUso
+}
+
+method hogar() {
+return castilloDePiedra  
+}
+
+method poderObjetoMasPoderosoEnHogar() {
+  return if(hogar.artefactosEnELCastillo().isEmpty()){
+    0
+  }
+  else{
+    (hogar.artefactosEnELCastillo().map({artefacto => artefacto.poderQuAPortaA_(self)})).max()
+  }
 }
 
 }
@@ -79,7 +97,7 @@ object castilloDePiedra {
 }
 
 object espadaDelDestino {
- const usos = 0
+ var usos = 0
  method poderQueAportaA_(jugador) {
    return if(usos < 1){
       jugador.poder()
@@ -90,14 +108,43 @@ object espadaDelDestino {
    self.seUsoElArtefacto()
  } 
 
- method seUsoLaEspada() {
+ method seUsoElArtefacto() {
    usos = usos + 1
  }
 
 }
 
 object libroDeHechizos {
-  
+  const hechizos = []
+
+
+  method poderQueOtorgaA_(jugador) {
+    return if (!hechizos.isEmpty()){
+        hechizos.first().poderQueAportaA_(jugador)
+    }
+    else{
+      0
+    }
+}
+}
+
+
+object bendicion {
+  method poderQueAportaA_(jugador) {
+    return 4
+  }
+}
+
+object invisibilidad {
+  method poderQueAportaA_(jugador) {
+   return jugador.poderBase()
+  }
+}
+
+object invocacion{
+  method porderQueAportaA_(jugador) {
+    return jugador.poderObjetoMasPoderosoEnHogar(jugador.hogar())
+  }
 }
 
 object collarDIvino {

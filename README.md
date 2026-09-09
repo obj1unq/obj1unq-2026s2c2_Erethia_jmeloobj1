@@ -107,7 +107,7 @@ Si consultamos la historia de encuentro con los artefactos debería ser:
 
 ### 2.1 Comportamiento de los artefactos
 
-Los artefactos son elementos que aportan al personaje cierto poder que puede usar en una batalla. Pero cuidado que cada vez que se combate en una batalla se sufren efectos. El poder de pelea de Rolando, dependerá de un valor base (inicialmente configurable) y de sus artefactos. **Tener en cuenta** al momento de programar los artefactos que éstos podrían ser usados por otros personajes que aún se han introducpresentado.
+Los artefactos son elementos que aportan al personaje cierto poder que puede usar en una batalla. Pero cuidado que cada vez que se combate en una batalla se sufren efectos. El poder de pelea de Rolando, dependerá de un valor base (inicialmente configurable) y de sus artefactos. **Tener en cuenta** al momento de programar los artefactos que éstos podrían ser usados por otros personajes que aún se han presentado.
 
 Poder de pelea de cada artefacto
   
