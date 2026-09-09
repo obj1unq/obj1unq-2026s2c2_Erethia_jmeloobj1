@@ -46,7 +46,7 @@ object rolando {
   }
 
 method poderDePelea() {
-  return poderBase + poder de artefactos en mochila
+  return poderBase + mochila.sum({artefacto --> artefacto.poder()})
 }
 
 method batallasConCollarEnUso() {
