@@ -1,5 +1,4 @@
-
-object rolando { 
+object rolando {
   const mochila = []
   var capacidadDeMochila = 2
   const hogar = castilloDePiedra
@@ -7,17 +6,13 @@ object rolando {
   const poderBase = 5
   const batallasConCollarEnUso = 0 
  
-  method mochila(){
-      return mochila
-  } 
+  method mochila() = mochila
   
   method capacidadDeMochila(_capacidadDeMochila) {
     capacidadDeMochila = _capacidadDeMochila
   }
   
-  method capacidadDeMochila() {
-    return capacidadDeMochila
-  }
+  method capacidadDeMochila() = capacidadDeMochila
   
   method encontrarArtefacto(artefacto) {
     if (self.validarRecolectarArtefacto()){ 
@@ -26,10 +21,10 @@ object rolando {
     }
     else{
         historiaDeRolando.agregarObjetoEncontrados(artefacto)
+    }
   }  
-}
 
-  method historiaDeRolando(){
+  method historiaDeRolando() {
     return historiaDeRolando.objetosEncontrados()
   }
   
@@ -37,7 +32,7 @@ object rolando {
   
   method validarRecolectarArtefacto() = mochila.size() < capacidadDeMochila
   
-  method vaciarMochila(){
+  method vaciarMochila() {
     hogar.guardarEnAlmacen(mochila)
     mochila.clear()
   }
@@ -58,7 +53,7 @@ method poderDePeleaEnBatalla() {
   return (poderBase + 1) + mochila.sum({artefacto => artefacto.poderQueAportaA_(self)})
 }
 
-method batallasConCollarEnUso(){
+method batallasConCollarEnUso() {
   return batallasConCollarEnUso
 }
 
@@ -66,15 +61,20 @@ method hogar(){
 return castilloDePiedra  
 }
 
-method poderObjetoMasPoderosoEnHogar() {
-  return if(hogar.artefactosEnELCastillo().isEmpty()){
-    0
+
+method poderDeObjetoMasPoderosoEnHogar() {
+  return if (!hogar.artefactosEnCastillo().isEmpty()){
+    (hogar.artefactosEnELCastillo().map({artefacto => artefacto.poderQuAPortaA_(self)})).max()
   }
   else{
-    (hogar.artefactosEnELCastillo().map({artefacto => artefacto.poderQuAPortaA_(self)})).max()
+    0
     }
   }
+
+
+
 }
+
 
 object historiaDeObjetos{
     const objetosEncontrados = []
@@ -86,6 +86,7 @@ object historiaDeObjetos{
   method agregarObjetoEncontrados(artefacto) {
     objetosEncontrados.add(artefacto)
   }
+
 }
 
 object castilloDePiedra {
@@ -95,9 +96,7 @@ object castilloDePiedra {
     almacenDeCastillo.addAll(artefactos)
   }
   
-method artefactosEnELCastillo(){ 
-      return almacecenDeCastillo
-      }
+  method artefactosEnELCastillo() = almacenDeCastillo
 }
 
 object espadaDelDestino {
@@ -117,6 +116,7 @@ object espadaDelDestino {
  }
 
 }
+
 
 object libroDeHechizos {
   const hechizos = []
@@ -151,7 +151,6 @@ object invocacion{
   }
 }
 
-
 object collarDIvino {
   
   method poderQueAportaA_(jugador) {
@@ -167,54 +166,6 @@ object collarDIvino {
 object armaduraDeAceroValyrio {
   method poderQueAportaA_(jugador) {
     return 6
-  }
-}
-
-
-object caterina {
-  var poder = 28
-  const hogar = fortalezaDeAcero
-
-  method poderDePelea() {
-    return poder
-  }
-
-  method hogar() {
-    return hogar
-  }
-}
-
-object fortalezaDeAcero {
-  
-}
-
-object archibaldo {
-  var poder = 16 
-  const hogar = palacioDeMarmol
-
-  method poderDePelea() {
-    return poder
-  } 
-
-  method hogar() {
-    hogar
-  }
-}
-
-object palacioDeMarmol {
-  
-}
-
-object astra {
-  var poder = 14
-  const  = torreDeMarfil
-
-  method poderDePelea(){
-    return 14
-  }
-
-  method hogar(){
-    return hogar
   }
 }
 
