@@ -83,6 +83,12 @@ method moradasConquistables() {
  return moradasConquistables
 }
 
+
+method esPoderoso() {
+  return ( enemigos.all({enemigo => enemigo.poderDePelea()<self.poderDePelea()}))
+}
+
+
 }
 
 
