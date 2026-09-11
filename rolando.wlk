@@ -2,12 +2,14 @@ object rolando {
   const mochila = []
   var capacidadDeMochila = 2
   const hogar = castilloDePiedra
-  var historiaDeRolando = historiaDeObjetos
+  const historiaDeRolando = historiaDeObjetos
   const poderBase = 5
   const batallasConCollarEnUso = 0 
+  const enemigos = [caterina, archibaldo, astra]
+  const moradasConquistables = []
  
   method mochila() = mochila
-  
+    
   method capacidadDeMochila(_capacidadDeMochila) {
     capacidadDeMochila = _capacidadDeMochila
   }
@@ -71,7 +73,15 @@ method poderDeObjetoMasPoderosoEnHogar() {
     }
   }
 
+method enemigosQuePuedeVencer() {
+  const enemigosQuePuedeVencer = enemigos.filter({enemigo => enemigo.poderDePelea()<self.poderDePelea()})
+  return enemigosQuePuedeVencer
+}
 
+method moradasConquistables() {
+ const moradasConquistables = enemigosQuePuedeVencer().map({enemigosQuePuedeVencer => enemigosQuePuedeVencer.hogar()}) 
+ return moradasConquistables
+}
 
 }
 
@@ -169,3 +179,55 @@ object armaduraDeAceroValyrio {
   }
 }
 
+object caterina {
+  var poderDePelea = 28
+  const hogar = fortalezaDeAcero
+
+  method poderDePelea() {
+    return poderDePelea
+  }  
+
+  method hogar() {
+    return hogar
+  }
+}
+
+object fortalezaDeAcero {
+  
+}
+
+object archibaldo {
+  var poderDePelea = 16
+  const hogar = palacioDeMármol 
+
+  method poderDePelea() {
+    return poderDePelea
+  }
+
+  method hogar() {
+    return hogar
+  }
+}
+
+object palacioDeMármol {
+  
+}
+
+object astra {
+  var poderDePelea = 14
+  const hogar = torreDeMarfil
+
+
+  method poderDePelea() {
+  return poderDePelea
+  }
+
+  method hogar() {
+    return hogar
+  }  
+
+}
+
+object torreDeMarfil {
+  
+}
