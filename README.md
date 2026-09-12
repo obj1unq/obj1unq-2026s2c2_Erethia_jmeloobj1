@@ -107,7 +107,7 @@ Si consultamos la historia de encuentro con los artefactos debería ser:
 
 ### 2.1 Comportamiento de los artefactos
 
-Los artefactos son elementos que aportan al personaje cierto poder que puede usar en una batalla. Pero cuidado que cada vez que se combate en una batalla se sufren efectos. El poder de pelea de Rolando, dependerá de un valor base (inicialmente configurable) y de sus artefactos. **Tener en cuenta** al momento de programar los artefactos que éstos podrían ser usados por otros personajes que aún se han introducpresentado.
+Los artefactos son elementos que aportan al personaje cierto poder que puede usar en una batalla. Pero cuidado que cada vez que se combate en una batalla se sufren efectos. El poder de pelea de Rolando, dependerá de un valor base (inicialmente configurable) y de sus artefactos. **Tener en cuenta** al momento de programar los artefactos que éstos podrían ser usados por otros personajes que aún se han presentado.
 
 Poder de pelea de cada artefacto
   
@@ -218,10 +218,15 @@ Si Rolando tiene de base 15, la espada, la armadura y el collar, entonces cuenta
 * Elegir un polimorfismo e indicar: 
 
    - ¿Qué nombre le pondrías al tipo de los objetos polimórficos?
+   artefactos
    - ¿Qué mensajes componen ese tipo?
+ lo compone el mensaje poderQueAportaA_(jugador)
    - ¿Quiénes usan los mensajes polimórficos?
+   solo el objeto Rolando ya que cada artefacto le otorga una cantidad especifica de poder segun el artefacto 
    
 * Respecto de las colecciones definidas:
 
     - ¿Qué **tipo** de elementos contienen?
+    la coleccion **enemigos** contiene los personajes que rivalizan con Rolando, la coleccion **mochila** contiene los artefactos que Rolando pudo llevarse luego de encontrarlos, **objetosEncontrados** en el objeto historiaDeObjetos, almacena los artefactos que encuentra Rolando y **almacenDeCastillo** contiene todos los arfetactos que Rolando vacía de su mochila al llegar  a su hogar
     - ¿Qué mensaje polimórfico (perteneciente al tipo mencionado) utilizaste dentro de un bloque?
+    Dentro del tipo **hechizos** se usa el mensaje polimorfico poderQueAportaA_(jugador), ya que hay una coleccion de **hechizos** que le aportan un poder diferente a Rolando.
