@@ -79,15 +79,26 @@ method enemigosQuePuedeVencer() {
 }
 
 method moradasConquistables() {
- const moradasConquistables = enemigosQuePuedeVencer().map({enemigosQuePuedeVencer => enemigosQuePuedeVencer.hogar()}) 
+ const moradasConquistables = enemigosQuePuedeVencer().map({enemigosAVencer => enemigosAVencer.hogar()})
  return moradasConquistables
 }
 
 
 method esPoderoso() {
-  return ( enemigos.all({enemigo => enemigo.poderDePelea()<self.poderDePelea()}))
+  return ( enemigos.all({enemigo => enemigo.poderDePelea()<self.poderDePelea()})) || self.poderBase() <= 10
 }
+	
+ 
+	method obtenerArtefactoFatalParaEnemigo(enemigo){
+		return 
+			if(self.poseeArtefactoFatalParaEnemigo(enemigo)){
+				mochila().find({artefacto => artefacto.poderQueOtorgaA_(self) > enemigo.poderDeBatalla()})
+			}
+	}
 
+	method poseeArtefactoFatalParaEnemigo(enemigo){
+		return mochila().any({artefacto => artefacto.poderQueOtorgaA_(self) > enemigo.poderDeBatalla()})
+	}
 
 }
 
@@ -124,7 +135,6 @@ object espadaDelDestino {
    else{
     (jugador.poder() / 2)   
    }
-   self.seUsoElArtefacto()
  } 
 
  method seUsoElArtefacto() {
