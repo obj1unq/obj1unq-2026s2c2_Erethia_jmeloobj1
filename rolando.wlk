@@ -6,7 +6,6 @@ object rolando {
   const poderBase = 5
   const batallasConCollarEnUso = 0 
   const enemigos = [caterina, archibaldo, astra]
-  const moradasConquistables = []
  
   method mochila() = mochila
     
@@ -79,8 +78,7 @@ method enemigosQuePuedeVencer() {
 }
 
 method moradasConquistables() {
- const moradasConquistables = enemigosQuePuedeVencer().map({enemigosAVencer => enemigosAVencer.hogar()})
- return moradasConquistables
+ return self.enemigosQuePuedeVencer().map({enemigosAVencer => enemigosAVencer.hogar()})
 }
 
 
@@ -92,12 +90,12 @@ method esPoderoso() {
 	method obtenerArtefactoFatalParaEnemigo(enemigo){
 		return 
 			if(self.poseeArtefactoFatalParaEnemigo(enemigo)){
-				mochila().find({artefacto => artefacto.poderQueOtorgaA_(self) > enemigo.poderDeBatalla()})
+				mochila.find({artefacto => artefacto.poderQueOtorgaA_(self) > enemigo.poderDeBatalla()})
 			}
 	}
 
 	method poseeArtefactoFatalParaEnemigo(enemigo){
-		return mochila().any({artefacto => artefacto.poderQueOtorgaA_(self) > enemigo.poderDeBatalla()})
+		return mochila.any({artefacto => artefacto.poderQueOtorgaA_(self) > enemigo.poderDeBatalla()})
 	}
 
 }
@@ -196,7 +194,7 @@ object armaduraDeAceroValyrio {
 }
 
 object caterina {
-  var poderDePelea = 28
+  const poderDePelea = 28
   const hogar = fortalezaDeAcero
 
   method poderDePelea() {
@@ -213,7 +211,7 @@ object fortalezaDeAcero {
 }
 
 object archibaldo {
-  var poderDePelea = 16
+  const poderDePelea = 16
   const hogar = palacioDeMármol 
 
   method poderDePelea() {
@@ -230,7 +228,7 @@ object palacioDeMármol {
 }
 
 object astra {
-  var poderDePelea = 14
+  const poderDePelea = 14
   const hogar = torreDeMarfil
 
 
